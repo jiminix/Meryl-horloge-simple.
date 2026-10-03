@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="2dp">
+
+    <LinearLayout
+        android:id="@+id/clock_mode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextClock
+            android:id="@+id/clock_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom|center_horizontal"
+            android:format12Hour="hh"
+            android:format24Hour="HH"
+            android:fontFamily="sans-serif-medium"
+            android:includeFontPadding="false"
+            android:textColor="#FFFFFFFF"
+            android:textSize="23sp" />
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="1dp"
+            android:background="#FFFFFFFF" />
+
+        <TextClock
+            android:id="@+id/clock_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top|center_horizontal"
+            android:format12Hour="mm"
+            android:format24Hour="mm"
+            android:fontFamily="sans-serif-medium"
+            android:includeFontPadding="false"
+            android:textColor="#FFFFFFFF"
+            android:textSize="23sp" />
+    </LinearLayout>
+
+    <Chronometer
+        android:id="@+id/active_chronometer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:fontFamily="sans-serif-medium"
+        android:includeFontPadding="false"
+        android:textColor="#FFFFFFFF"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/fallback_timer_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:fontFamily="sans-serif-medium"
+        android:includeFontPadding="false"
+        android:textColor="#FFFFFFFF"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/alarm_plus"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="top|end"
+        android:gravity="center"
+        android:fontFamily="sans-serif-medium"
+        android:includeFontPadding="false"
+        android:text="+"
+        android:textColor="#FFFFFFFF"
+        android:textSize="13sp"
+        android:visibility="gone" />
+</FrameLayout>
