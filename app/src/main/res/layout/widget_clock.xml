@@ -25,10 +25,12 @@
             android:textColor="#FFFFFFFF"
             android:textSize="23sp" />
 
-        <View
+        <TextView
+            android:id="@+id/separator"
             android:layout_width="30dp"
             android:layout_height="1dp"
-            android:background="#FFFFFFFF" />
+            android:background="#FFFFFFFF"
+            android:text="" />
 
         <TextClock
             android:id="@+id/clock_minutes"
