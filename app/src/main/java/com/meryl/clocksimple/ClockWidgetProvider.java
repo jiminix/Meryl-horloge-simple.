@@ -19,15 +19,23 @@ public class ClockWidgetProvider extends AppWidgetProvider {
 
     @Override public void onReceive(Context c, Intent i) {
         super.onReceive(c,i);
-        updateAll(c);
+        try {
+            updateAll(c);
+        } catch (Exception ignored) {}
     }
 
     public static void updateAll(Context c) {
-        AppWidgetManager m=AppWidgetManager.getInstance(c);
-        ComponentName cn=new ComponentName(c, ClockWidgetProvider.class);
-        int[] ids=m.getAppWidgetIds(cn);
+        try {
+            AppWidgetManager m=AppWidgetManager.getInstance(c);
+            ComponentName cn=new ComponentName(c, ClockWidgetProvider.class);
+            int[] ids=m.getAppWidgetIds(cn);
 
-        for(int id:ids) updateOne(c,m,id);
+            for(int id:ids) {
+                try {
+                    updateOne(c,m,id);
+                } catch (Exception ignored) {}
+            }
+        } catch (Exception ignored) {}
     }
 
     private static void updateOne(Context c, AppWidgetManager m, int id) {
@@ -45,8 +53,11 @@ public class ClockWidgetProvider extends AppWidgetProvider {
 
         rv.setOnClickPendingIntent(R.id.widget_root,pi);
 
-        AlarmManager am=(AlarmManager)c.getSystemService(Context.ALARM_SERVICE);
-        boolean alarm=am!=null && am.getNextAlarmClock()!=null;
+        boolean alarm=false;
+        try {
+            AlarmManager am=(AlarmManager)c.getSystemService(Context.ALARM_SERVICE);
+            alarm=am!=null && am.getNextAlarmClock()!=null;
+        } catch (Exception ignored) {}
         rv.setViewVisibility(R.id.alarm_plus, alarm ? View.VISIBLE : View.GONE);
 
         var p=c.getSharedPreferences(PREFS,Context.MODE_PRIVATE);
